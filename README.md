@@ -1,18 +1,10 @@
 ---
 title: 剑指-offer
 date: 2020-02-20 21:11:42
-ategories:
-    - 剑指-offer
-    - 刷题
-tags:
-    - 剑指-offer
-    - leetcode
-mp3: http://domain.com/awesome.mp3
-cover: http://domain.com/awesome.jpg
 preview: 100
 ---
 
-flag:  限制今天起开始也刷剑指offer啦，一步一步来。 
+flag:  今天起开始也刷剑指offer啦，一步一步来。 
 
 ### 二维数组的查找
 
