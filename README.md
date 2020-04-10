@@ -171,7 +171,7 @@ function minNumberInRotateArray(rotateArray) {
 ### 斐波那契数列
 
 ```javascript
-// 递归就不说了 事件太长了 无法通过
+// 递归就不说了 时间太长了 无法通过
 // 采用循环的方式
 function Fibonacci(n) {
     let r = 0;
@@ -341,7 +341,7 @@ function Merge(pHead1, pHead2) {
     return preHead.next;
 } 
 看了下题解   发现别人用递归实现的很厉害 代码量更少
-// 重点抓住这两个链表都是单挑递增的，因此我们只需要不断地比较他们的头结点就行，明显这是个重复的过程。
+// 重点抓住这两个链表都是单调递增的，因此我们只需要不断地比较他们的头结点就行，明显这是个重复的过程。
 /* function ListNode(x){
  this.val = x;
  this.next = null;
@@ -1157,7 +1157,7 @@ function LeftRotateString(str, n)
 function Sum_Solution(n)
 {
     // write code here
-    return( Math.pow(n,2)+n)/2
+    return ( Math.pow(n,2)+n)/2
 }
 hhh 简单 公式法 递归法都可以
 
@@ -1387,5 +1387,55 @@ function check(left, right) {
     }
     return check(left.left, right.right) && check(left.right, right.left)
 }
+```
+
+### leetcode 841
+
+有 N 个房间，开始时你位于 0 号房间。每个房间有不同的号码：0，1，2，...，N-1，并且房间里可能有一些钥匙能使你进入下一个房间。在形式上，对于每个房间 i 都有一个钥匙列表 rooms[i]，每个钥匙 rooms[i][j] 由 [0,1，...，N-1] 中的一个整数表示，其中 N = rooms.length。 钥匙 rooms[i][j] = v 可以打开编号为 v 的房间。最初，除 0 号房间外的其余所有房间都被锁住。你可以自由地在房间之间来回走动。如果能进入每个房间返回 true，否则返回 false。
+
+示例 1：输入: [[1],[2],[3],[]]
+输出: true
+解释:  
+我们从 0 号房间开始，拿到钥匙 1。
+之后我们去 1 号房间，拿到钥匙 2。
+然后我们去 2 号房间，拿到钥匙 3。
+最后我们去了 3 号房间。
+由于我们能够进入每个房间，我们返回 true。
+示例 2：
+
+输入：[[1,3],[3,0,1],[2],[0]]
+输出：false
+解释：我们不能进入 2 号房间。
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/keys-and-rooms
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
+
+```javascript
+/*
+ * @lc app=leetcode.cn id=841 lang=javascript
+ *
+ * [841] 钥匙和房间
+ */
+// 解题思路:
+//     只要以此用手里的钥匙打开对应的房门， 将房门内新的钥匙取出放入手里钥匙这个数组， 直到手里没有新钥匙循环结束.
+// 最后判断钥匙数量和房间数量是否相等就可以得出结果. **
+//     这里要注意房门内可能取得几条同样的钥匙， 需要将得到的数组去重.
+
+// @lc code=start
+/**
+ * @param {number[][]} rooms
+ * @return {boolean}
+ */
+var canVisitAllRooms = function(rooms) {
+    let n = 0;
+    let key = [0];
+    while (key.length > n) {
+        key = key.concat([...new Set(rooms[key[n]].filter((item) => !key.includes(item)))])
+        n++
+    }
+    return key.length === rooms.length
+};
+// @lc code=end
 ```
 
