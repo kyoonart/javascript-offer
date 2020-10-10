@@ -54,6 +54,10 @@ console.log(replaceSpace('We Are Happy'));
 function replaceSpace(str) {
   return str.replace(/\s/g, '%20');
 }
+var replaceSpace = function(s) {
+            let temp = s.split(' ');
+            return temp.map((item, index) => index === temp.length - 1 ? item : `${item}%20`).join('');
+        };
 
 ```
 
